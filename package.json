@@ -28,7 +28,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.3",
     "request": "^2.88.2",
-    "require-dir": "^1.2.0"
+    "require-dir": "^1.2.0",
+    "util": "^0.12.3"
   },
   "config": {
     "ConnString": "mongodb://localhost:27017/blockchain",

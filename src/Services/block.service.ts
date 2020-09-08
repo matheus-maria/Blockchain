@@ -50,7 +50,7 @@ export default class BlockService {
       return true
    }
 
-   static rebuildBlockchain = async (blockchain: CryptoBlock[]): Promise<boolean> =>{
+   static rebuildBlockchain = async (): Promise<boolean> =>{
 
       // GET BLOCKCHAIN DATA
       request(config.Blockchains[0], async (error, response, body) => {
