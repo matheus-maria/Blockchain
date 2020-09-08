@@ -8,10 +8,21 @@ export default class BlockService {
    static getBlocks = async (): Promise<CryptoBlock[]> => {
       
       // GET BLOCKS
-      const blocks: any = await Blocks.find({});      
+      let blocks: any = await Blocks.find({});
+      let blockArray: CryptoBlock[] = []
+      
+      blocks.forEach(element => {
+         
+         var block = new CryptoBlock(element.Index, element.Data, element.PreviousHash)
+         block.Hash = element.Hash
+         block.Nonce = element.Nonce
+         block.Timestamp = element.Timestamp
+         blockArray.push(block)
+      });
+
 
       //RESULT
-      return blocks as CryptoBlock[]
+      return blockArray
    }
 
    static addBlock = async (block: CryptoBlock): Promise<boolean> => {
@@ -19,6 +30,18 @@ export default class BlockService {
       // ADD BLOCK
       await Blocks.create(block);
       return true
+   }
+
+   static rebuildBlockchain = async (blockchain: CryptoBlock[]): Promise<boolean> =>{
+
+      // REMOVE ALL BLOCKS
+      await Blocks.deleteMany({});
+
+      // ADD ALL VALID BLOCKS
+      await Blocks.create(blockchain);
+
+      return true
+
    }
 
 }

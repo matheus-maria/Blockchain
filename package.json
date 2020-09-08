@@ -29,7 +29,8 @@
   },
   "config": {
     "ConnString": "mongodb://localhost:27017/blockchain",
-    "Difficulty": 4
+    "Difficulty": 4,
+    "MonitoringTime": 500
   },
   "devDependencies": {
     "sucrase": "^3.15.0",

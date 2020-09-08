@@ -1,6 +1,9 @@
 // Requires
 import CryptoBlock from './Block'
 import BlockService from '../Services/block-service'
+import { isNullOrUndefined } from 'util';
+import { TIMEOUT } from 'dns';
+import { timeStamp } from 'console';
 
 export default class CryptoBlockchain {
 
@@ -56,13 +59,13 @@ export default class CryptoBlockchain {
       BlockService.addBlock(newBlock)
    }
 
-   checkChainValidity = (): boolean => {
-      for (let i = 1; i < this.Blockchain.length; i++) {
+   checkChainValidity = (blockchain: CryptoBlock[]): boolean => {
+      for (let i = 1; i < blockchain.length; i++) {
 
-         const currentBlock = this.Blockchain[i];
-         const precedingBlock = this.Blockchain[i - 1];
+         const currentBlock = blockchain[i];
+         const precedingBlock = blockchain[i - 1];
 
-         if (currentBlock.Hash !== currentBlock.computeHash()) {
+         if (currentBlock.Hash != currentBlock.computeHash()) {
             return false;
          }
          if (currentBlock.PreviousHash !== precedingBlock.Hash) return false;
@@ -70,4 +73,27 @@ export default class CryptoBlockchain {
       return true;
    }
 
+   monitor = async (time: number): Promise<void> => {
+
+      console.clear()
+
+      var blockchain = await BlockService.getBlocks()
+
+      if(!isNullOrUndefined(blockchain)){
+         if(!this.checkChainValidity(blockchain)){
+            console.log("Blockchain é inválido")
+            console.log("Restaurando o blockchain .....")
+            await BlockService.rebuildBlockchain(this.Blockchain)
+            console.log("Blockchain restaurado!")
+            await new Promise(r => setTimeout(r, 2000));
+         }
+         else{
+            this.Blockchain = blockchain
+            console.log(JSON.stringify(blockchain, null, 4))
+         }
+      }
+
+      setTimeout(() => this.monitor(time) ,time) 
+         
+   }
 }

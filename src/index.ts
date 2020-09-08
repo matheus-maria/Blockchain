@@ -9,17 +9,16 @@ import CryptoBlockchain from './Blockchain/Blockchain'
 mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true } )
 
 // Load Blockchain
-let smashingCoin = new CryptoBlockchain(config.Difficulty)
+let helixBlockchain = new CryptoBlockchain(config.Difficulty)
 
-setTimeout(() => {
+// Monitor blockchain
+helixBlockchain.monitor(config.MonitoringTime)
 
-   console.clear()
+setTimeout(() =>{
 
-   smashingCoin.addBlock(
+   helixBlockchain.addBlock(
       `{ "AAA": 50  }`
    );
-   
-   console.log(JSON.stringify(smashingCoin, null, 4))
 
-},3000)
+},5000)
 

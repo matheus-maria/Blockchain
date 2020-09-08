@@ -11,12 +11,12 @@ export default class CryptoBlock{
    PreviousHash: string
    Nonce: number
 
-   constructor(index: number, data: any, precedingHash: string = " ") {
+   constructor(index: number, data: any, previousHash: string = " ") {
       this.Index = index
       this.Timestamp = new Date()
       this.Data = data
       this.Hash = this.computeHash()
-      this.PreviousHash = precedingHash
+      this.PreviousHash = previousHash
       this.Nonce = 0
    }
    
