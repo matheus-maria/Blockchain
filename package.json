@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/matheus-maria/Blockchain#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
+    "express": "^4.17.1",
     "mongoose": "^5.10.3",
     "request": "^2.88.2",
     "require-dir": "^1.2.0"
@@ -32,8 +34,11 @@
     "ConnString": "mongodb://localhost:27017/blockchain",
     "Difficulty": 4,
     "MonitoringTime": 500,
-    "HelixUrl":"http://143.107.145.18:1026/v2/entities/",
-    "HelixEntity": "transaction-001"
+    "HelixUrl": "http://143.107.145.18:1026/v2/entities/",
+    "HelixEntity": "transaction-001",
+    "Blockchains": [
+      "localhost:3000"
+    ]
   },
   "devDependencies": {
     "sucrase": "^3.15.0",

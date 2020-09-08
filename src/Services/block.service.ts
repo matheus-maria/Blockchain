@@ -13,14 +13,12 @@ export default class BlockService {
       let blockArray: CryptoBlock[] = []
       
       blocks.forEach(element => {
-         
          var block = new CryptoBlock(element.Index, element.Data, element.PreviousHash)
          block.Hash = element.Hash
          block.Nonce = element.Nonce
          block.Timestamp = element.Timestamp
          blockArray.push(block)
       });
-
 
       //RESULT
       return blockArray
