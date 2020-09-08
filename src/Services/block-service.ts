@@ -6,8 +6,12 @@ const Blocks = mongoose.model('Blocks');
 export default class BlockService {
 
    static getBlocks = async (): Promise<CryptoBlock[]> => {
-      const blocks = await Blocks.find({});
-      return blocks
+      
+      // GET BLOCKS
+      const blocks: any = await Blocks.find({});      
+
+      //RESULT
+      return blocks as CryptoBlock[]
    }
 
    static addBlock = async (block: CryptoBlock): Promise<boolean> => {

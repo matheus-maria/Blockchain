@@ -1,7 +1,7 @@
 // Requires
 import SHA256 from "crypto-js/sha256"
 
-export default class CryptoBlock {
+export default class CryptoBlock{
 
    // VARIABLES
    Index: number
@@ -12,13 +12,14 @@ export default class CryptoBlock {
    Nonce: number
 
    constructor(index: number, data: any, precedingHash: string = " ") {
-      this.Index = index;
+      this.Index = index
       this.Timestamp = new Date()
-      this.Data = data;
-      this.Hash = this.computeHash();
-      this.PreviousHash = precedingHash;
-      this.Nonce = 0;
+      this.Data = data
+      this.Hash = this.computeHash()
+      this.PreviousHash = precedingHash
+      this.Nonce = 0
    }
+   
 
    computeHash = (): string => {
       return SHA256(
