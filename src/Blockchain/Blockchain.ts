@@ -71,7 +71,7 @@ export default class CryptoBlockchain {
 
    monitor = async (time: number): Promise<void> => {
 
-      //console.clear()
+      console.clear()
 
       var blockchain = await BlockService.getBlocks()
 
@@ -85,7 +85,9 @@ export default class CryptoBlockchain {
          }
          else{
             this.Blockchain = blockchain
-            console.log(JSON.stringify(blockchain, null, 4))
+            console.log('Blockchain: ' + blockchain.length)
+            blockchain.forEach(x => console.log('Hash: '+ x.Hash))
+
          }
       }
 
