@@ -1,27 +1,43 @@
 // Requires
 import CryptoBlock from './Block'
+import BlockService from '../Services/block-service'
 
 export default class CryptoBlockchain {
 
    Blockchain: CryptoBlock[]
    Difficulty: number
 
-   constructor(blockchain: CryptoBlock[], difficulty: number) {
+   constructor(difficulty: number) {
 
-      if(blockchain.length == 0)
-         this.Blockchain = [this.startGenesisBlock()];
-      else
-         this.Blockchain = blockchain
-
-      this.Difficulty = difficulty;
+      // SET PROPERTIES
+      this.getBlockchain();    
+      this.Difficulty = difficulty
    }
 
-   startGenesisBlock = (): CryptoBlock => {
-      return new CryptoBlock(0, "Genesis Block", "0");
+   getBlockchain = async () => {
+
+      var blockchain = await BlockService.getBlocks()
+
+      if(blockchain.length == 0)
+         this.Blockchain = await this.startGenesisBlock()
+      else
+         this.Blockchain = blockchain
+   }
+
+   startGenesisBlock = async (): Promise<CryptoBlock[]> => {
+      
+      // CREATE GENESIS
+      var genesisBlock = new CryptoBlock(0, "Genesis Block", "0")
+
+      // ADD BLOCK TO DATABASE
+      BlockService.addBlock(genesisBlock)
+
+      // RESULT
+      return [genesisBlock]
    }
 
    obtainLatestBlock = (): CryptoBlock => {
-      return this.Blockchain[this.Blockchain.length - 1];
+      return this.Blockchain[this.Blockchain.length - 1]
    }
 
    addBlock = (data: string): void => {
@@ -31,10 +47,13 @@ export default class CryptoBlockchain {
 
       // GENERATE NEW BLOCK
       let newBlock = new CryptoBlock(lastBlock.Index + 1, data, lastBlock.Hash)      
-      newBlock.proofOfWork(this.Difficulty);
+      newBlock.proofOfWork(this.Difficulty)
 
       // ADD BLOCK TO THE CHAIN
-      this.Blockchain.push(newBlock);
+      this.Blockchain.push(newBlock)
+
+      // ADD BLOCK TO DATABASE
+      BlockService.addBlock(newBlock)
    }
 
    checkChainValidity = (): boolean => {

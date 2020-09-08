@@ -1,18 +1,25 @@
 // Requires
-import CryptoBlockchain from './Blockchain/Blockchain'
+import mongoose from 'mongoose'
 import { config } from '../package.json'
+import requireDir from 'require-dir'
+requireDir('models');
+import CryptoBlockchain from './Blockchain/Blockchain'
 
-let smashingCoin = new CryptoBlockchain([], config.Difficulty);
+// Connect to Blockchain database
+mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true } )
 
-console.clear()
-console.log("smashingCoin mining in progress....");
+// Load Blockchain
+let smashingCoin = new CryptoBlockchain(config.Difficulty)
 
-smashingCoin.addBlock(
-   `{ sender: "Iris Ljesnjanin", recipient: "Cosima Mielke", quantity: 50 }`
-);
+setTimeout(() => {
 
-smashingCoin.addBlock(
-   `{ sender: "Vitaly Friedman", recipient: "Ricardo Gimenes", quantity: 100 }`
-);
+   console.clear()
 
-console.log(JSON.stringify(smashingCoin, null, 4));
+   smashingCoin.addBlock(
+      `{ "AAA": 50  }`
+   );
+   
+   console.log(JSON.stringify(smashingCoin, null, 4))
+
+},3000)
+

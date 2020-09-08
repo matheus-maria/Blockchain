@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start":"sucrase-node src/index.ts",
-    "build":"sucrase ./src -d ./dist --transforms typescript,imports"
+    "start": "sucrase-node src/index.ts",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,12 @@
   },
   "homepage": "https://github.com/matheus-maria/Blockchain#readme",
   "dependencies": {
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.0.0",
+    "mongoose": "^5.10.3",
+    "require-dir": "^1.2.0"
   },
   "config": {
+    "ConnString": "mongodb://localhost:27017/blockchain",
     "Difficulty": 4
   },
   "devDependencies": {
