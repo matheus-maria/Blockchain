@@ -37,7 +37,7 @@
     "HelixUrl": "http://143.107.145.18:1026/v2/entities/",
     "HelixEntity": "transaction-001",
     "Blockchains": [
-      "localhost:3000"
+      "http://localhost:3000/api/getBlocks"
     ]
   },
   "devDependencies": {

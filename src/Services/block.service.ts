@@ -1,6 +1,8 @@
 import CryptoBlock from '../Blockchain/Block';
+import request from 'request'
 import mongoose from 'mongoose'
 import { isNullOrUndefined } from 'util';
+import { config } from '../../package.json'
 
 const Blocks = mongoose.model('Blocks');
 
@@ -50,14 +52,28 @@ export default class BlockService {
 
    static rebuildBlockchain = async (blockchain: CryptoBlock[]): Promise<boolean> =>{
 
-      // REMOVE ALL BLOCKS
-      await Blocks.deleteMany({});
+      // GET BLOCKCHAIN DATA
+      request(config.Blockchains[0], async (error, response, body) => {
 
-      // ADD ALL VALID BLOCKS
-      await Blocks.create(blockchain);
+         // CONVERT DATA
+         body = JSON.parse(body)
+         let blockArray: CryptoBlock[] = []      
+         body.forEach(element => {
+            var block = new CryptoBlock(element.Index, element.Data, element.PreviousHash)
+            block.Hash = element.Hash
+            block.Nonce = element.Nonce
+            block.Timestamp = new Date(element.Timestamp)
+            blockArray.push(block)
+         });
+
+         // REMOVE ALL BLOCKS
+         await Blocks.deleteMany({});
+
+         // ADD ALL VALID BLOCKS
+         await Blocks.create(blockArray);
+      }) 
 
       return true
-
    }
 
 }

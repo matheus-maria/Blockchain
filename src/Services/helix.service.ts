@@ -24,9 +24,9 @@ export default class HelixService {
          var lastBlock = await BlockService.getLastBlock();
 
          if(isNullOrUndefined(lastBlock)){ return }
-         else if (lastBlock.Data == "Genesis Block"){ this.Blockchain.addBlock(currentObject); }
-         else if(JSON.stringify(lastBlock.Data.transaction.value) != JSON.stringify(currentObject.transaction.value)){
-            this.Blockchain.addBlock(currentObject);
+         else if (lastBlock.Data == "Genesis Block"){ this.Blockchain.addBlock(currentObject.transaction.value); }
+         else if(JSON.stringify(lastBlock.Data) != JSON.stringify(currentObject.transaction.value)){
+            this.Blockchain.addBlock(currentObject.transaction.value);
          }
       })
 
