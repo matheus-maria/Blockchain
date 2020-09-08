@@ -63,7 +63,7 @@ export default class CryptoBlockchain {
          const currentBlock = blockchain[i];
          const precedingBlock = blockchain[i - 1];
 
-         if (currentBlock.Hash != currentBlock.computeHash()) {
+         if (currentBlock.Hash !== currentBlock.computeHash()) {
             return false;
          }
          if (currentBlock.PreviousHash !== precedingBlock.Hash) return false;
@@ -73,7 +73,7 @@ export default class CryptoBlockchain {
 
    monitor = async (time: number): Promise<void> => {
 
-      console.clear()
+      //console.clear()
 
       var blockchain = await BlockService.getBlocks()
 
@@ -91,7 +91,7 @@ export default class CryptoBlockchain {
          }
       }
 
-      setTimeout(() => this.monitor(time) ,time) 
-         
+      // LOOP
+      setTimeout(() => this.monitor(time) ,time)          
    }
 }

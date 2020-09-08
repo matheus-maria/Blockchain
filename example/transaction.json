@@ -1,0 +1,45 @@
+{
+   "id": "transaction-001",
+   "type": "transaction",
+   "transaction": {
+      "type":"Object",
+      "value": {
+         "date": {
+            "type": "DateTime",
+            "value": "2020-09-27T12:00:00.000Z",
+            "metadata": {}
+         },
+         "destination": {
+            "type": "Number",
+            "value": 2,
+            "metadata": {}
+         },
+         "origin": {
+            "type": "Number",
+            "value": 1,
+            "metadata": {}
+         },
+         "productId": {
+            "type": "Number",
+            "value": 10,
+            "metadata": {}
+         },
+         "tag": {
+            "type": "Text",
+            "value": "9.010112006242112e32",
+            "metadata": {}
+         },
+         "transactionType": {
+            "type": "Text",
+            "value": "entry",
+            "metadata": {}
+         },
+         "user": {
+            "type": "Text",
+            "value": "teste",
+            "metadata": {}
+         },
+         "metadata": {}
+      }
+   }
+}

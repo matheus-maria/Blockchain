@@ -13,17 +13,8 @@ mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: tr
 let helixBlockchain = new CryptoBlockchain(config.Difficulty)
 
 // Monitor blockchain
-//helixBlockchain.monitor(config.MonitoringTime)
+helixBlockchain.monitor(config.MonitoringTime)
 
 // Monitor Helix
-var helix = new HelixService(config.HelixUrl);
-helix.monitorEntity(config.HelixEntity, config.MonitoringTime)
-
-// setTimeout(() =>{
-
-//    helixBlockchain.addBlock(
-//       `{ "AAA": 50  }`
-//    );
-
-// },5000)
-
+var helix = new HelixService(config.HelixUrl, helixBlockchain);
+setTimeout(() => helix.monitorEntity(config.HelixEntity, config.MonitoringTime) ,config.MonitoringTime) 
