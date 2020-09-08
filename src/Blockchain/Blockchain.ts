@@ -63,9 +63,7 @@ export default class CryptoBlockchain {
          const currentBlock = blockchain[i];
          const precedingBlock = blockchain[i - 1];
 
-         if (currentBlock.Hash !== currentBlock.computeHash()) {
-            return false;
-         }
+         if (currentBlock.Hash !== currentBlock.computeHash()) return false;
          if (currentBlock.PreviousHash !== precedingBlock.Hash) return false;
       }
       return true;

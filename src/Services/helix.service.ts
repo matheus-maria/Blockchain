@@ -19,7 +19,6 @@ export default class HelixService {
       request(this.HelixUrl + entity, async (error, response, body) => {
 
          let currentObject = JSON.parse(body)
-         currentObject = currentObject
 
          // GET LAST WHITEN BLOCK 
          var lastBlock = await BlockService.getLastBlock();

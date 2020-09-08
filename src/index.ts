@@ -17,4 +17,4 @@ helixBlockchain.monitor(config.MonitoringTime)
 
 // Monitor Helix
 var helix = new HelixService(config.HelixUrl, helixBlockchain);
-setTimeout(() => helix.monitorEntity(config.HelixEntity, config.MonitoringTime) ,config.MonitoringTime) 
+setTimeout(() => helix.monitorEntity(config.HelixEntity, config.MonitoringTime) ,2000) 
