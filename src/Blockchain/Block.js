@@ -5,9 +5,9 @@ const SHA256 = require("crypto-js/sha256");
 
 class CryptoBlock {
 
-   constructor(index, timestamp, data, precedingHash = " ") {
+   constructor(index, data, precedingHash = " ") {
       this.index = index;
-      this.timestamp = timestamp;
+      this.timestamp = new Date()
       this.data = data;
       this.precedingHash = precedingHash;
       this.hash = this.computeHash();

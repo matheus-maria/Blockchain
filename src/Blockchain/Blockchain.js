@@ -11,7 +11,7 @@ class CryptoBlockchain {
    }
 
    startGenesisBlock() {
-      return new CryptoBlock(0, "01/01/2020", "Initial Block in the Chain", "0");
+      return new CryptoBlock(0, "Genesis Block", "0");
    }
 
    obtainLatestBlock() {
@@ -19,8 +19,9 @@ class CryptoBlockchain {
    }
 
    addNewBlock(newBlock) {
-      newBlock.precedingHash = this.obtainLatestBlock().hash;
-      //newBlock.hash = newBlock.computeHash();
+      let lastBlock = this.obtainLatestBlock()
+      newBlock.index = lastBlock.index + 1;
+      newBlock.precedingHash = lastBlock.hash;
       newBlock.proofOfWork(this.difficulty);
       this.blockchain.push(newBlock);
    }
