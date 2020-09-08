@@ -1,0 +1,22 @@
+version: "3"
+
+networks: 
+  db:
+
+services:
+  db:
+    image: mongo:3.4
+    networks: 
+      - db
+  server:
+    build: server
+    volumes:
+      - ./server:/server
+    working_dir: /server
+    command: npm start
+    networks: 
+      - db
+    ports:
+      - 3001:3001
+    depends_on: 
+      - db
