@@ -1,5 +1,5 @@
 {
-  "name": "Blockchain",
+  "name": "blockchain",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -25,12 +25,15 @@
   "dependencies": {
     "crypto-js": "^4.0.0",
     "mongoose": "^5.10.3",
+    "request": "^2.88.2",
     "require-dir": "^1.2.0"
   },
   "config": {
     "ConnString": "mongodb://localhost:27017/blockchain",
     "Difficulty": 4,
-    "MonitoringTime": 500
+    "MonitoringTime": 500,
+    "HelixUrl":"http://143.107.145.18:1026/v2/entities/",
+    "HelixEntity": "remedy1"
   },
   "devDependencies": {
     "sucrase": "^3.15.0",

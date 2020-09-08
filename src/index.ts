@@ -4,6 +4,7 @@ import { config } from '../package.json'
 import requireDir from 'require-dir'
 requireDir('models');
 import CryptoBlockchain from './Blockchain/Blockchain'
+import HelixService from './Services/helix.service';
 
 // Connect to Blockchain database
 mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true } )
@@ -12,13 +13,17 @@ mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: tr
 let helixBlockchain = new CryptoBlockchain(config.Difficulty)
 
 // Monitor blockchain
-helixBlockchain.monitor(config.MonitoringTime)
+//helixBlockchain.monitor(config.MonitoringTime)
 
-setTimeout(() =>{
+// Monitor Helix
+var helix = new HelixService(config.HelixUrl);
+helix.monitorEntity(config.HelixEntity, config.MonitoringTime)
 
-   helixBlockchain.addBlock(
-      `{ "AAA": 50  }`
-   );
+// setTimeout(() =>{
 
-},5000)
+//    helixBlockchain.addBlock(
+//       `{ "AAA": 50  }`
+//    );
+
+// },5000)
 

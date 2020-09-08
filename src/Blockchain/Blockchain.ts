@@ -1,9 +1,7 @@
 // Requires
 import CryptoBlock from './Block'
-import BlockService from '../Services/block-service'
+import BlockService from '../Services/block.service'
 import { isNullOrUndefined } from 'util';
-import { TIMEOUT } from 'dns';
-import { timeStamp } from 'console';
 
 export default class CryptoBlockchain {
 
