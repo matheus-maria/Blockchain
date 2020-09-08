@@ -86,7 +86,7 @@ export default class CryptoBlockchain {
          else{
             this.Blockchain = blockchain
             console.log('Blockchain: ' + blockchain.length)
-            blockchain.forEach(x => console.log('Hash: '+ x.Hash))
+            blockchain.forEach(x => console.log('Hash: ' + x.Hash + ' | Nonce: ' + x.Nonce))
 
          }
       }
