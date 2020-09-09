@@ -5,6 +5,7 @@ import { isNullOrUndefined } from 'util';
 import { config } from '../../package.json'
 
 const Blocks = mongoose.model('Blocks');
+const Errors = mongoose.model('Errors');
 
 export default class BlockService {
 
@@ -54,6 +55,8 @@ export default class BlockService {
 
    static rebuildBlockchain = async (): Promise<boolean> =>{
 
+      console.log("Blockchain está inválido, restaurando .....")
+
       // GET BLOCKCHAIN DATA
       request(config.Blockchains[0], async (error, response, body) => {
 
@@ -74,6 +77,12 @@ export default class BlockService {
 
          // ADD ALL VALID BLOCKS
          await Blocks.create(blockArray);
+
+         // ADD ERROR LOG
+         var error: any = { "Error": "Blockchain corrompido!" }
+         await Errors.create(error)
+
+         console.log("Blockchain restaurado!")
       }) 
 
       return true

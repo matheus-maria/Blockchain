@@ -81,10 +81,7 @@ export default class CryptoBlockchain {
 
       if(!isNullOrUndefined(blockchain)){
          if(!this.checkChainValidity(blockchain)){
-            console.log("Blockchain é inválido")
-            console.log("Restaurando o blockchain .....")
             await BlockService.rebuildBlockchain()
-            console.log("Blockchain restaurado!")
             await new Promise(r => setTimeout(r, 2000));
          }
          else{
