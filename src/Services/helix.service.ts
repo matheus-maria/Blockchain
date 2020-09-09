@@ -18,16 +18,20 @@ export default class HelixService {
       // GET HELIX CURRENT VALUE
       request(this.HelixUrl + entity, async (error, response, body) => {
 
-         let currentObject = JSON.parse(body.split(',"metadata":{}').join(""))
+         if(!isNullOrUndefined(body)){ 
 
-         // GET LAST WHITEN BLOCK 
-         var lastBlock = await BlockService.getLastBlock();
+            let currentObject = JSON.parse(body.split(',"metadata":{}').join(""))
 
-         if(isNullOrUndefined(lastBlock)){ return }
-         else if (lastBlock.Data == "Genesis Block"){ this.Blockchain.addBlock(currentObject.transaction.value); }
-         else if(JSON.stringify(lastBlock.Data) != JSON.stringify(currentObject.transaction.value)){
-            this.Blockchain.addBlock(currentObject.transaction.value);
+            // GET LAST WHITEN BLOCK 
+            var lastBlock = await BlockService.getLastBlock();
+
+            if(isNullOrUndefined(lastBlock)){ return }
+            else if (lastBlock.Data == "Genesis Block"){ this.Blockchain.addBlock(currentObject.transaction.value); }
+            else if(JSON.stringify(lastBlock.Data) != JSON.stringify(currentObject.transaction.value)){
+               this.Blockchain.addBlock(currentObject.transaction.value);
+            }
          }
+         
       })
 
       // LOOP

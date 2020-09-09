@@ -1,22 +1,22 @@
 version: "3"
 
-networks: 
-  db:
-
 services:
   db:
-    image: mongo:3.4
+    image: mongo:latest
     networks: 
       - db
+    ports:
+      - 27017:27017
   server:
-    build: server
-    volumes:
-      - ./server:/server
-    working_dir: /server
+    build: .
     command: npm start
     networks: 
       - db
     ports:
-      - 3001:3001
+      - 8080:8080
     depends_on: 
       - db
+
+networks: 
+  db:
+    driver: bridge

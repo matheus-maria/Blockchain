@@ -11,7 +11,7 @@ import CryptoBlockchain from './Blockchain/Blockchain'
 import HelixService from './Services/helix.service';
 
 // Constants
-const PORT = 3000
+const PORT = 8080
 const HOST = 'localhost'
 
 // App
@@ -20,7 +20,8 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to Blockchain database
-mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true } )
+mongoose.Promise = global.Promise
+mongoose.connect(config.ConnString, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
 
 // Load Blockchain
 let helixBlockchain = new CryptoBlockchain(config.Difficulty)
@@ -35,6 +36,4 @@ setTimeout(() => helix.monitorEntity(config.HelixEntity, config.MonitoringTime) 
 // Route
 app.use('/api', require('./routes'));
 
-app.listen(PORT, HOST, () => {
-    console.log(`Server listening on ${HOST}:${PORT}`)
-})
+app.listen(PORT, () => {})
