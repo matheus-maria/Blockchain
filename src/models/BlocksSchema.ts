@@ -25,6 +25,10 @@ const BlocksSchema = new mongoose.Schema({
    Nonce: {
       type: Number,
       required: true
+   },
+   Duration: {
+      type: Number,
+      required: true
    }
 });
 

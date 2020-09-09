@@ -41,14 +41,18 @@ export default class CryptoBlockchain {
       return this.Blockchain[this.Blockchain.length - 1]
    }
 
-   addBlock = (data: string): void => {
+   addBlock = (data: string) => {
 
       // GET LAST BLOCK
       let lastBlock = this.obtainLatestBlock()
 
       // GENERATE NEW BLOCK
-      let newBlock = new CryptoBlock(lastBlock.Index + 1, data, lastBlock.Hash)      
+      let newBlock = new CryptoBlock(lastBlock.Index + 1, data, lastBlock.Hash)    
+      
+      var before = new Date();
       newBlock.proofOfWork(this.Difficulty)
+      var after = new Date();
+      newBlock.Duration = this.diff_minutes(after, before);
 
       // ADD BLOCK TO THE CHAIN
       this.Blockchain.push(newBlock)
@@ -86,12 +90,18 @@ export default class CryptoBlockchain {
          else{
             this.Blockchain = blockchain
             console.log('Blockchain: ' + blockchain.length)
-            blockchain.forEach(x => console.log('Hash: ' + x.Hash + ' | Nonce: ' + x.Nonce))
-
+            blockchain.forEach(x => console.log('Hash: ' + x.Hash + ' | Nonce: ' + x.Nonce + ' | Duration: ' + x.Duration))
          }
       }
 
       // LOOP
       setTimeout(() => this.monitor(time) ,time)          
+   }
+
+   diff_minutes = (date2, date1): number => {
+      var diff =(date2.getTime() - date1.getTime()) / 1000;
+      diff /= 60;
+      return Math.abs(Math.round(diff));
+   
    }
 }

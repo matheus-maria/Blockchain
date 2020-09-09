@@ -10,6 +10,7 @@ export default class CryptoBlock{
    Hash: string
    PreviousHash: string
    Nonce: number
+   Duration: number
 
    constructor(index: number, data: any, previousHash: string = " ") {
       this.Index = index
@@ -18,6 +19,7 @@ export default class CryptoBlock{
       this.Hash = this.computeHash()
       this.PreviousHash = previousHash
       this.Nonce = 0
+      this.Duration = 0
    }
    
 
