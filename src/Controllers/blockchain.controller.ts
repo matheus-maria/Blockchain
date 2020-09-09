@@ -16,6 +16,7 @@ export default class BlockchainController {
          block.Hash = element.Hash
          block.Nonce = element.Nonce
          block.Timestamp = element.Timestamp
+         block.Duration = element.Duration
          blockArray.push(block)
       });
 

@@ -101,7 +101,7 @@ export default class CryptoBlockchain {
    diff_minutes = (date2, date1): number => {
       var diff =(date2.getTime() - date1.getTime()) / 1000;
       diff /= 60;
-      return Math.abs(Math.round(diff));
-   
+      return Math.abs(Math.round(diff));   
    }
+   
 }

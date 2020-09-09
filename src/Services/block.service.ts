@@ -18,6 +18,7 @@ export default class BlockService {
          var block = new CryptoBlock(element.Index, element.Data, element.PreviousHash)
          block.Hash = element.Hash
          block.Nonce = element.Nonce
+         block.Duration = element.Duration
          block.Timestamp = element.Timestamp
          blockArray.push(block)
       });
@@ -37,6 +38,7 @@ export default class BlockService {
       var block = new CryptoBlock(lastBlock.Index, lastBlock.Data, lastBlock.PreviousHash)
       block.Hash = lastBlock.Hash
       block.Nonce = lastBlock.Nonce
+      block.Duration = lastBlock.Duration
       block.Timestamp = lastBlock.Timestamp
 
       // RESULT
@@ -62,6 +64,7 @@ export default class BlockService {
             var block = new CryptoBlock(element.Index, element.Data, element.PreviousHash)
             block.Hash = element.Hash
             block.Nonce = element.Nonce
+            block.Duration = element.Duration
             block.Timestamp = new Date(element.Timestamp)
             blockArray.push(block)
          });
