@@ -33,7 +33,7 @@
   },
   "config": {
     "ConnString": "mongodb://localhost:27017/blockchain",
-    "Difficulty": 4,
+    "Difficulty": 6,
     "MonitoringTime": 500,
     "HelixUrl": "http://143.107.145.18:1026/v2/entities/",
     "HelixEntity": "transaction-001",
