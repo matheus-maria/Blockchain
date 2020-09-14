@@ -6,7 +6,7 @@ services:
     networks: 
       - db
     ports:
-      - 27017:27017
+      - 30000:27017
   server:
     build: .
     command: npm start
