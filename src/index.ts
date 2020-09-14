@@ -6,13 +6,12 @@ import requireDir from 'require-dir'
 
 // REFERECES
 import { config } from '../package.json'
-requireDir('Models');
+requireDir('models');
 import CryptoBlockchain from './Blockchain/Blockchain'
 import HelixService from './Services/helix.service';
 
 // Constants
 const PORT = 8080
-const HOST = 'localhost'
 
 // App
 const app = express()
