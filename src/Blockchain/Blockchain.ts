@@ -38,14 +38,14 @@ export default class CryptoBlockchain {
       return [genesisBlock]
    }
 
-   obtainLatestBlock = (): CryptoBlock => {
-      return this.Blockchain[this.Blockchain.length - 1]
+   obtainLatestBlock = async (): Promise<CryptoBlock> => {
+      return await BlockService.getLastBlock()
    }
 
-   addBlock = (data: string) => {
+   addBlock = async (data: string) => {
 
       // GET LAST BLOCK
-      let lastBlock = this.obtainLatestBlock()
+      let lastBlock = await this.obtainLatestBlock()
 
       // GENERATE NEW BLOCK
       let newBlock = new CryptoBlock(lastBlock.Index + 1, data, lastBlock.Hash)    

@@ -32,13 +32,13 @@
     "util": "^0.12.3"
   },
   "config": {
-    "ConnString": "mongodb://db/blockchain",
+    "ConnString": "mongodb://143.107.145.18:30000/blockchain",
     "Difficulty": 4,
     "MonitoringTime": 500,
     "HelixUrl": "http://143.107.145.18:1026/v2/entities/",
     "HelixEntity": "blockchain",
     "Blockchains": [
-      "http://localhost:3000/api/getBlocks"
+      "http://143.107.145.28:8080/api/getBlocks"
     ]
   },
   "devDependencies": {
