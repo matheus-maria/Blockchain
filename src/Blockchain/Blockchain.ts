@@ -29,6 +29,7 @@ export default class CryptoBlockchain {
       
       // CREATE GENESIS
       var genesisBlock = new CryptoBlock(0, "Genesis Block", "0")
+      genesisBlock.Timestamp = new Date('2020-01-01 00:00:00.000Z')
 
       // ADD BLOCK TO DATABASE
       BlockService.addBlock(genesisBlock)
