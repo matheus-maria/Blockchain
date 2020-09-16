@@ -8,8 +8,7 @@ services:
     ports:
       - 30000:27017
   server:
-    build: .
-    command: npm start
+    image: matheusmaria/helix-blockchain:latest
     environment:
       - ConnString=mongodb://db/blockchain
       - Difficulty=4
