@@ -10,6 +10,13 @@ services:
   server:
     build: .
     command: npm start
+    environment:
+      - ConnString=mongodb://db/blockchain
+      - Difficulty=4
+      - MonitoringTime=500
+      - HelixUrl=http://143.107.145.18:1026/v2/entities/
+      - HelixEntity=blockchain
+      - Blockchain=http://143.107.145.28:8080/api/getBlocks
     networks: 
       - db
     ports:

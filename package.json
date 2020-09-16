@@ -30,17 +30,7 @@
     "request": "^2.88.2",
     "require-dir": "^1.2.0",
     "util": "^0.12.3"
-  },
-  "config": {
-    "ConnString": "mongodb://db/blockchain",
-    "Difficulty": 4,
-    "MonitoringTime": 500,
-    "HelixUrl": "http://143.107.145.18:1026/v2/entities/",
-    "HelixEntity": "blockchain",
-    "Blockchains": [
-      "http://143.107.145.28:8080/api/getBlocks"
-    ]
-  },
+  },  
   "devDependencies": {
     "sucrase": "^3.15.0",
     "typescript": "^4.0.2"
