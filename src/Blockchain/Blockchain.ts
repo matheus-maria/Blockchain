@@ -1,7 +1,6 @@
 // Requires
 import CryptoBlock from './Block'
 import BlockService from '../Services/block.service'
-import { isNullOrUndefined } from 'util';
 
 export default class CryptoBlockchain {
 
@@ -80,7 +79,7 @@ export default class CryptoBlockchain {
 
       var blockchain = await BlockService.getBlocks()
 
-      if(!isNullOrUndefined(blockchain)){
+      if(blockchain != undefined && blockchain != null){
          if(!this.checkChainValidity(blockchain)){
             await BlockService.rebuildBlockchain()
             await new Promise(r => setTimeout(r, 2000));

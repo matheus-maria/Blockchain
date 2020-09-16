@@ -1,8 +1,7 @@
 import CryptoBlock from '../Blockchain/Block';
 import request from 'request'
 import mongoose from 'mongoose'
-import { isNullOrUndefined } from 'util';
-import { config } from '../../package.json'
+import keys from '../keys'
 
 const Blocks = mongoose.model('Blocks');
 const Errors = mongoose.model('Errors');
@@ -33,7 +32,7 @@ export default class BlockService {
       // GET BLOCKS
       let lastBlock: any = await Blocks.findOne().sort({ field: 'desc', _id: -1 }).limit(1)
 
-      if(isNullOrUndefined(lastBlock)){ return null }
+      if(lastBlock == undefined || lastBlock == null){ return null }
       
       //CONVERT 
       var block = new CryptoBlock(lastBlock.Index, lastBlock.Data, lastBlock.PreviousHash)
@@ -58,7 +57,7 @@ export default class BlockService {
       console.log("Blockchain está inválido, restaurando .....")
 
       // GET BLOCKCHAIN DATA
-      request(config.Blockchains[0], async (error, response, body) => {
+      request(keys.Blockchain, async (error, response, body) => {
 
          // CONVERT DATA
          body = JSON.parse(body)
