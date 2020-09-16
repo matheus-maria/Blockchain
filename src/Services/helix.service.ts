@@ -1,7 +1,6 @@
 import request from 'request'
 import BlockService from './block.service'
 import CryptoBlockchain from '../Blockchain/Blockchain'
-import { isNullOrUndefined } from 'util'
 
 export default class HelixService {
 
@@ -18,14 +17,14 @@ export default class HelixService {
       // GET HELIX CURRENT VALUE
       request(this.HelixUrl + entity, async (error, response, body) => {
 
-         if(!isNullOrUndefined(body)){ 
+         if(body != undefined && body != null){ 
 
             let currentObject = JSON.parse(body.split(',"metadata":{}').join(""))
 
             // GET LAST WHITEN BLOCK 
             var lastBlock = await BlockService.getLastBlock();
 
-            if(isNullOrUndefined(lastBlock)){ return }
+            if(lastBlock == undefined || lastBlock == null){ return }
             else if (lastBlock.Data == "Genesis Block"){ this.Blockchain.addBlock(currentObject.transaction.value); }
             else if(JSON.stringify(lastBlock.Data) != JSON.stringify(currentObject.transaction.value)){
                await this.Blockchain.addBlock(currentObject.transaction.value);
