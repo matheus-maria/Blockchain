@@ -4,7 +4,9 @@
 
 <h4 align="center"> 
 	C.A.R.E Blockchain - Concluído 🔨
-</h4
+</h4>
+
+---
 
 ## 💻 Sobre o projeto
 
