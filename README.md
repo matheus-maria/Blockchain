@@ -10,7 +10,7 @@
 
 ## 💻 Sobre o projeto
 
-O C.A.R.E Blockchain é uma projeto que visa auxiliar a distribuição de medicamentos de alto custo entre postos da rede pública de saúde brasileira de forma assertiva e rastreável, para melhorar o processo de distribuição como um todo, garantindo uma maior disponibilidade para o consumidor.
+O C.A.R.E Blockchain é um projeto que visa auxiliar a distribuição de medicamentos de alto custo entre postos da rede pública da saúde brasileira de forma assertiva e rastreável, para melhorar o processo de distribuição como um todo, garantindo uma maior disponibilidade para o consumidor.
 
 Projeto foi desenvolvido durante o trabalho de conclusão de curso (TCC) da [FACULDADE DE TECNOLOGIA TERMOMECANICA (FTT)](http://ftt.com.br/home/) no curso de Engenharia de Computação.
 
@@ -22,8 +22,7 @@ Projeto foi desenvolvido durante o trabalho de conclusão de curso (TCC) da [FAC
 custo chega da indústria
 farmacêutica ao centro de
 distribuição cadastrado na
-C. A. R. E.
-   - Cada caixa de medicamento possuirá
+C. A. R. E. Cada caixa de medicamento possuirá
 um adesivo NFC que será utilizado para
 identificar e auxiliar no monitoramento
 e rastreabilidade do medicamento
@@ -116,11 +115,11 @@ Antes de começar, você vai precisar ter instalado em sua máquina a seguinte f
 
 ### Configurações
 
-Para fazer a configuração do serviço da blockchain, é necessário editar as variaveis de ambiente qe se encontram no [docker-compose.yml](https://github.com/matheus-maria/Blockchain/blob/master/docker-compose.yml), sendo elas:
+Para fazer a configuração do serviço da blockchain, é necessário editar as variaveis de ambiente que se encontram no [docker-compose.yml](https://github.com/matheus-maria/Blockchain/blob/master/docker-compose.yml), sendo elas:
 
 - **ConnString** : Conexão ao banco de dados da blockchain (MongoDB).
 - **Difficulty** : Dificuldade da cadeia da blockchain.
-- **MonitoringTime** : Inverlado de tempo entre cada validação da blockchain.
+- **MonitoringTime** : Intevarlo de tempo entre cada validação da blockchain.
 - **HelixUrl** : Url do Helix Sandbox NG.
 - **HelixEntity** : Entidade do Helix Sandbox NG.
 - **Blockchain** : Url para obtenção de outra blockchain em funcionamento, caso a blockchain atual seja corrompida.
